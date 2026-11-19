@@ -46,7 +46,7 @@ export const en: Dictionary = {
     where: 'Where',
     spots: 'Seats',
     price: 'Price',
-    free: 'Free. Partners cover it.',
+    free: 'Free',
     people: 'people, and they fill up',
     program: 'How the night goes',
     cta: 'Get a seat',
@@ -142,7 +142,7 @@ export const en: Dictionary = {
       },
       {
         title: 'Nobody comes to sell',
-        body: 'Not speakers, not partners, not attendees. We come to tell how decisions were made.',
+        body: 'We come to tell how decisions were made, not to pitch.',
       },
       {
         title: 'What is said here stays here',
@@ -151,10 +151,6 @@ export const en: Dictionary = {
       {
         title: 'Help first, ask later',
         body: 'Introduce people, share what you know, reply when someone writes to you.',
-      },
-      {
-        title: 'Partners pay, but do not program',
-        body: 'They cover the costs so that entry is free. They do not decide who gets in or what is discussed.',
       },
     ],
   },
@@ -182,9 +178,9 @@ export const en: Dictionary = {
   },
   partners: {
     kicker: 'For companies',
-    title: 'Entry is free because partners make it possible',
-    lead: 'Partners cover the venue, food and drinks. In return they are in the room where the projects of Bizkaia are starting to decide who to work with. They do not choose who gets in or what is discussed.',
-    body: 'If your company wants to be close to people who are just getting started, write to us and we will talk it through on a short call.',
+    title: 'Want your company close to people who are just getting started?',
+    lead: 'Sutara partners are in the room with the projects of Bizkaia that are taking off: the ones that in a few months will be choosing tools, suppliers and who to work with.',
+    body: 'If that sounds like you, write to us and we will talk it through on a short call.',
     cta: 'I want to be a partner',
     mailSubject: 'Sutara partner',
   },
@@ -198,7 +194,7 @@ export const en: Dictionary = {
       },
       {
         q: 'How much does it cost?',
-        a: 'Nothing. Entry is free and partners cover the costs.',
+        a: 'Nothing. Entry is free.',
       },
       {
         q: 'Why do I need to request a seat?',

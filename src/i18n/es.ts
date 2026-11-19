@@ -46,7 +46,7 @@ export const es: Dictionary = {
     where: 'Dónde',
     spots: 'Plazas',
     price: 'Precio',
-    free: 'Gratis. Lo cubren los partners.',
+    free: 'Gratis',
     people: 'personas, y se llenan',
     program: 'Cómo va la noche',
     cta: 'Pide tu plaza',
@@ -142,7 +142,7 @@ export const es: Dictionary = {
       },
       {
         title: 'Nadie viene a vender',
-        body: 'Ni ponentes, ni partners, ni asistentes. Venimos a contar cómo se tomaron las decisiones.',
+        body: 'Venimos a contar cómo se tomaron las decisiones, no a hacer un pitch.',
       },
       {
         title: 'Lo que se dice aquí se queda aquí',
@@ -151,10 +151,6 @@ export const es: Dictionary = {
       {
         title: 'Primero ayuda, luego pide',
         body: 'Presenta a gente, comparte lo que sabes, responde cuando te escriban.',
-      },
-      {
-        title: 'Los partners pagan, pero no programan',
-        body: 'Cubren los costes para que entrar sea gratis. No deciden quién entra ni de qué se habla.',
       },
     ],
   },
@@ -182,9 +178,9 @@ export const es: Dictionary = {
   },
   partners: {
     kicker: 'Para empresas',
-    title: 'Entrar es gratis porque los partners lo hacen posible',
-    lead: 'Los partners cubren el espacio, la comida y la bebida. A cambio están en la sala donde los proyectos de Bizkaia están empezando a decidir con quién trabajar. No eligen quién entra ni de qué se habla.',
-    body: 'Si tu empresa quiere estar cerca de quien está empezando, escríbenos y lo hablamos en una llamada corta.',
+    title: '¿Tu empresa quiere estar cerca de quien está empezando?',
+    lead: 'Los partners de Sutara están en la sala con los proyectos de Bizkaia que están arrancando: los que en unos meses van a elegir herramientas, proveedores y con quién trabajar.',
+    body: 'Si te encaja, escríbenos y lo hablamos en una llamada corta.',
     cta: 'Quiero ser partner',
     mailSubject: 'Partner de Sutara',
   },
@@ -198,7 +194,7 @@ export const es: Dictionary = {
       },
       {
         q: '¿Cuánto cuesta?',
-        a: 'Nada. La entrada es gratis y los gastos los cubren los partners.',
+        a: 'Nada. La entrada es gratis.',
       },
       {
         q: '¿Por qué hay que pedir plaza?',
