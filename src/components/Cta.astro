@@ -1,14 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 import glow from '../assets/brand/ilu-contacto.webp';
-import { t } from '../i18n/utils';
+import { t, formatDate } from '../i18n/utils';
 import { site, type Locale } from '../data/site';
+import { nextSession } from '../data/sessions';
 
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
 const d = t(locale);
+const date = nextSession ? formatDate(nextSession.date, locale, 'weekday') : '';
+const body = d.cta.body.replace('{date}', date);
 ---
 
 <section class="hairline relative isolate overflow-hidden border-t">
@@ -24,7 +27,7 @@ const d = t(locale);
   </div>
   <div class="section py-24 md:py-32">
     <h2 class="max-w-3xl text-[clamp(2.25rem,6vw,4.5rem)] text-hueso">{d.cta.title}</h2>
-    <p class="mt-6 max-w-xl text-ceniza">{d.cta.body}</p>
+    <p class="mt-6 max-w-xl text-ceniza">{body}</p>
     <div class="mt-9 flex flex-wrap gap-3">
       <a href={site.luma} class="btn btn-solid" target="_blank" rel="noopener">{d.cta.primary}</a>
       <a href={`mailto:${site.email}`} class="btn btn-ghost">{d.cta.secondary}</a>
