@@ -56,13 +56,8 @@ export const en: Dictionary = {
   statement: { line1: 'Less pitch.', line2: 'More conversation.' },
   whatIs: {
     kicker: 'What it is',
-    title: 'A founder house in Bilbao that grows out of BilboDev',
-    lead: 'At BilboDev we already meet to learn and build. Sutara focuses on the people starting a project in Bizkaia and gives them a place to move forward.',
-    stats: [
-      { value: '+200', label: 'people in the BilboDev community' },
-      { value: '+10', label: 'sessions organised' },
-      { value: '25', label: 'average attendees per session' },
-    ],
+    title: 'A founder house in Bilbao for the people who build',
+    lead: 'Sutara brings together the people starting a project in Bizkaia and gives them a place to move forward: a small room, people in the same situation and someone who has already been there.',
     cards: [
       {
         title: 'A small group',
@@ -235,6 +230,5 @@ export const en: Dictionary = {
     contact: 'Contact',
     madeIn: 'Made in Bilbao',
     seeYou: 'See you at the next session',
-    origin: 'Born from the community',
   },
 };

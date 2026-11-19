@@ -56,13 +56,8 @@ export const es: Dictionary = {
   statement: { line1: 'Menos pitch.', line2: 'Más conversación.' },
   whatIs: {
     kicker: 'Qué es',
-    title: 'Una founder house en Bilbao que parte de BilboDev',
-    lead: 'En BilboDev ya nos juntamos para aprender y construir. Sutara pone el foco en quienes están montando un proyecto en Bizkaia y les da un sitio donde avanzar.',
-    stats: [
-      { value: '+200', label: 'personas en la comunidad BilboDev' },
-      { value: '+10', label: 'sesiones organizadas' },
-      { value: '25', label: 'asistentes de media por sesión' },
-    ],
+    title: 'Una founder house en Bilbao para la gente que construye',
+    lead: 'Sutara junta a quienes están montando un proyecto en Bizkaia y les da un sitio donde avanzar: una sala pequeña, gente en la misma situación y alguien que ya ha pasado por ahí.',
     cards: [
       {
         title: 'Un grupo pequeño',
@@ -235,6 +230,5 @@ export const es: Dictionary = {
     contact: 'Contacto',
     madeIn: 'Hecho en Bilbao',
     seeYou: 'Hasta la próxima sesión',
-    origin: 'Nace de la comunidad',
   },
 };

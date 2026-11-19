@@ -16,7 +16,6 @@ export const site = {
   x: '',
   linkedin: '',
   instagram: '',
-  community: { name: 'BilboDev', url: 'https://bilbodev.com' },
 } as const;
 
 export type Locale = 'es' | 'en';

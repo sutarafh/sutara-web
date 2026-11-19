@@ -51,7 +51,6 @@ export interface Dictionary {
     kicker: string;
     title: string;
     lead: string;
-    stats: { value: string; label: string }[];
     cards: { title: string; body: string }[];
     manifestoLink: string;
   };
@@ -101,6 +100,5 @@ export interface Dictionary {
     contact: string;
     madeIn: string;
     seeYou: string;
-    origin: string;
   };
 }
