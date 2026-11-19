@@ -1,0 +1,93 @@
+---
+import Logo from './Logo.astro';
+import Isotipo from './Isotipo.astro';
+import { t, localePath, otherLocale } from '../i18n/utils';
+import { site, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+const home = localePath(locale);
+const year = new Date().getFullYear();
+const links = [
+  { href: `${home}#sesiones`, label: d.nav.sessions },
+  { href: `${home}#que-es`, label: d.nav.whatIs },
+  { href: `${home}#manifiesto`, label: d.nav.manifesto },
+  { href: `${home}#partners`, label: d.nav.partners },
+  { href: `${home}#preguntas`, label: d.nav.faq },
+];
+const social = [
+  { href: site.luma, label: 'Luma' },
+  { href: site.x, label: 'X' },
+  { href: site.linkedin, label: 'LinkedIn' },
+  { href: site.instagram, label: 'Instagram' },
+].filter((s) => s.href);
+---
+
+<footer class="hairline border-t bg-grafito">
+  <div class="section grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <a href={home} class="text-[1.4rem]"><Logo withTagline /></a>
+      <p class="mt-6 max-w-sm text-sm text-ceniza">{d.footer.tagline}</p>
+      <p class="label mt-6 text-piedra">
+        {d.footer.origin}
+        <a href={site.community.url} class="text-hueso hover:text-brasa" target="_blank" rel="noopener"
+          >{site.community.name}</a
+        >
+      </p>
+    </div>
+
+    <div>
+      <p class="label text-brasa">{d.footer.nav}</p>
+      <ul class="mt-5 space-y-3">
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} class="label text-ceniza hover:text-hueso">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={localePath(otherLocale(locale))} class="label text-ceniza hover:text-hueso">
+            {locale === 'es' ? 'English' : 'Castellano'}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="label text-brasa">{d.footer.contact}</p>
+      <ul class="mt-5 space-y-3">
+        {
+          social.map((s) => (
+            <li>
+              <a href={s.href} class="label text-ceniza hover:text-hueso" target="_blank" rel="noopener">
+                {s.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={`mailto:${site.email}`} class="label text-ceniza hover:text-hueso">{site.email}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hairline border-t">
+    <div
+      class="section flex flex-col gap-3 py-6 text-[0.6875rem] uppercase tracking-[0.18em] text-piedra sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>© {year} {site.name} <span class="text-brasa">*</span> {d.footer.madeIn}</p>
+      <p class="flex items-center gap-3">
+        <span>{d.footer.seeYou}</span>
+        <Isotipo class="h-3.5 w-auto text-brasa" />
+        <span>43.2630° N, 2.9350° W</span>
+      </p>
+    </div>
+  </div>
+</footer>

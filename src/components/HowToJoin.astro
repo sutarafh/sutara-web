@@ -1,0 +1,42 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { t } from '../i18n/utils';
+import { site, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+---
+
+<section id="como-entrar" class="bg-pizarra hairline scroll-mt-16 border-t">
+  <div class="section py-20 md:py-24">
+    <SectionHeading kicker={d.join.kicker} title={d.join.title} size="md" />
+
+    <ol class="mt-14 grid gap-8 md:grid-cols-3">
+      {
+        d.join.steps.map((s) => (
+          <li class="ticks px-6 py-6">
+            <h3 class="text-2xl text-hueso">
+              <span class="mr-2 text-brasa" aria-hidden="true">
+                →
+              </span>
+              {s.title}
+            </h3>
+            <p class="mt-4 text-sm text-ceniza">{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-14 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+      <p class="max-w-2xl text-ceniza">
+        <strong class="font-display text-lg font-semibold tracking-[-0.03em] text-hueso">{d.join.demoTitle}</strong>
+        {' '}{d.join.demoBody}
+        <a href={`mailto:${site.email}`} class="ml-1 text-brasa underline-offset-4 hover:underline">{site.email}</a>
+      </p>
+      <a href={site.luma} class="btn btn-primary" target="_blank" rel="noopener">{d.join.cta}</a>
+    </div>
+  </div>
+</section>

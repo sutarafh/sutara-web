@@ -1,0 +1,56 @@
+---
+/**
+ * Manifiesto: sección sobre HUESO con logo y texto en grafito.
+ * Regla del manual: sin colores highlight sobre fondo hueso.
+ */
+import Isotipo from './Isotipo.astro';
+import SectionHeading from './SectionHeading.astro';
+import { t } from '../i18n/utils';
+import type { Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+---
+
+<section id="manifiesto" class="scroll-mt-16 bg-hueso text-grafito">
+  <div class="section py-20 md:py-28">
+    <div class="grid gap-12 md:grid-cols-[1fr_1.3fr] md:gap-20">
+      <div>
+        <SectionHeading kicker={d.why.kicker} title={d.why.title} light />
+        <p class="label mt-8 text-humo">
+          <span class="font-display text-2xl font-semibold lowercase tracking-[-0.05em] text-grafito">su</span>
+          <span class="mx-2">·</span> {locale === 'es' ? 'fuego' : 'fire'}
+          <span class="mx-3">*</span>
+          <span class="font-display text-2xl font-semibold lowercase tracking-[-0.05em] text-grafito">sutara</span>
+          <span class="mx-2">·</span> {locale === 'es' ? 'hacia el fuego' : 'towards the fire'}
+        </p>
+        <Isotipo class="mt-12 h-16 w-auto text-grafito" />
+      </div>
+      <div class="space-y-6 text-pretty text-[1.0625rem] leading-relaxed text-grafito/85">
+        {d.why.story.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+
+    <div class="hairline-dark mt-20 border-t pt-10">
+      <p class="label text-humo">{d.why.rulesKicker}</p>
+      <ol class="hairline-dark mt-6 divide-y border-t border-grafito/15 divide-grafito/15">
+        {
+          d.why.rules.map((r) => (
+            <li class="grid gap-2 py-6 md:grid-cols-[1fr_1fr] md:gap-10">
+              <h3 class="text-2xl">
+                <span class="mr-2" aria-hidden="true">
+                  →
+                </span>
+                {r.title}
+              </h3>
+              <p class="text-grafito/75">{r.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

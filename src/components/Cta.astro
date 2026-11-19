@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import glow from '../assets/brand/ilu-contacto.webp';
+import { t } from '../i18n/utils';
+import { site, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+---
+
+<section class="hairline relative isolate overflow-hidden border-t">
+  <div class="absolute inset-0 -z-10">
+    <Image
+      src={glow}
+      alt=""
+      widths={[800, 1200, 1600]}
+      sizes="100vw"
+      class="h-full w-full object-cover object-right opacity-70"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-grafito via-grafito/80 to-grafito/30"></div>
+  </div>
+  <div class="section py-24 md:py-32">
+    <h2 class="max-w-3xl text-[clamp(2.25rem,6vw,4.5rem)] text-hueso">{d.cta.title}</h2>
+    <p class="mt-6 max-w-xl text-ceniza">{d.cta.body}</p>
+    <div class="mt-9 flex flex-wrap gap-3">
+      <a href={site.luma} class="btn btn-solid" target="_blank" rel="noopener">{d.cta.primary}</a>
+      <a href={`mailto:${site.email}`} class="btn btn-ghost">{d.cta.secondary}</a>
+    </div>
+  </div>
+</section>

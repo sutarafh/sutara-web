@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import lines from '../assets/brand/ilu-deriva.webp';
+import { t } from '../i18n/utils';
+import type { Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+---
+
+<section class="hairline relative isolate overflow-hidden border-t" aria-label={`${d.statement.line1} ${d.statement.line2}`}>
+  <div class="absolute inset-0 -z-10">
+    <Image
+      src={lines}
+      alt=""
+      widths={[800, 1200, 1600]}
+      sizes="100vw"
+      class="h-full w-full object-cover object-center opacity-80"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-grafito via-grafito/60 to-transparent"></div>
+  </div>
+  <div class="section py-24 md:py-32">
+    <p class="display text-[clamp(2.5rem,7vw,6rem)] text-hueso">
+      {d.statement.line1}<br />
+      <span class="text-brasa">{d.statement.line2}</span>
+    </p>
+  </div>
+</section>

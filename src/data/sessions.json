@@ -1,0 +1,63 @@
+{
+  "_comment": "Sesiones de Sutara. La primera con status 'upcoming' es la que sale en el hero. Fechas en ISO (YYYY-MM-DD). TODO: confirmar fecha, hora, aforo y enlace de Luma de la sesión cero.",
+  "sessions": [
+    {
+      "number": "000",
+      "slug": "session-zero",
+      "status": "upcoming",
+      "name": { "es": "Sesión cero", "en": "Session zero" },
+      "format": { "es": "Charla práctica", "en": "Practical talk" },
+      "date": "2026-11-26",
+      "time": "18:30",
+      "city": "Bilbao",
+      "venue": {
+        "es": "La dirección va en la invitación",
+        "en": "The address is in the invitation"
+      },
+      "spots": 30,
+      "luma": "https://luma.com/sutara",
+      "program": [
+        {
+          "kind": "talk",
+          "title": { "es": "Charla práctica", "en": "Practical talk" },
+          "detail": {
+            "es": "Alguien que ya ha pasado por ahí cuenta qué hizo y qué aprendió.",
+            "en": "Someone who has been there tells what they did and what they learned."
+          },
+          "speaker": null,
+          "duration": "30 min"
+        },
+        {
+          "kind": "qa",
+          "title": { "es": "Preguntas", "en": "Questions" },
+          "detail": {
+            "es": "Los founders preguntan por lo que les está pasando ahora.",
+            "en": "Founders ask about what is happening to them right now."
+          },
+          "speaker": null,
+          "duration": "20 min"
+        },
+        {
+          "kind": "networking",
+          "title": { "es": "Networking", "en": "Networking" },
+          "detail": {
+            "es": "Tiempo para hablar con el resto de la sala y ver dónde podéis ayudaros.",
+            "en": "Time to talk to the rest of the room and see where you can help each other."
+          },
+          "speaker": null,
+          "duration": null
+        },
+        {
+          "kind": "office-hours",
+          "title": { "es": "Office hours", "en": "Office hours" },
+          "detail": {
+            "es": "Encuentros 1:1 con ponentes y partners.",
+            "en": "1:1 meetings with speakers and partners."
+          },
+          "speaker": null,
+          "duration": null
+        }
+      ]
+    }
+  ]
+}

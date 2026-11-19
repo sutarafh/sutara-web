@@ -1,0 +1,77 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { t } from '../i18n/utils';
+import { site, type Locale } from '../data/site';
+import partnersData from '../data/partners.json';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+
+interface Partner {
+  name: string;
+  url: string;
+  tier: 'principal' | 'colaborador' | 'conocimiento';
+  logo?: string;
+}
+const partners = partnersData.partners as Partner[];
+const logos = import.meta.glob<{ default: ImageMetadata }>('../assets/partners/*.{png,svg,webp}', {
+  eager: true,
+});
+const logoFor = (p: Partner) => (p.logo ? logos[`../assets/partners/${p.logo}`]?.default : undefined);
+const subject = encodeURIComponent(locale === 'es' ? 'Partner de Sutara' : 'Sutara partner');
+---
+
+<section id="partners" class="hairline scroll-mt-16 border-t">
+  <div class="section py-20 md:py-24">
+    <SectionHeading kicker={d.partners.kicker} title={d.partners.title} />
+    <p class="mt-8 max-w-2xl text-pretty text-lg text-ceniza">{d.partners.lead}</p>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {
+        d.partners.tiers.map((tier) => (
+          <div class="ticks flex flex-col px-6 py-6">
+            <h3 class="text-2xl text-hueso">{tier.name}</h3>
+            <p class="label mt-2 text-brasa">{tier.note}</p>
+            <ul class="arrow-list mt-6 space-y-2 text-sm text-ceniza">
+              {tier.perks.map((perk) => (
+                <li>{perk}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 max-w-3xl text-sm text-piedra">{d.partners.notForSale}</p>
+
+    <div class="hairline mt-16 border-t pt-10">
+      <p class="label text-brasa">{d.partners.logosTitle}</p>
+      {
+        partners.length === 0 ? (
+          <p class="mt-5 text-ceniza">{d.partners.logosEmpty}</p>
+        ) : (
+          <ul class="mt-8 flex flex-wrap items-center gap-x-12 gap-y-8">
+            {partners.map((p) => {
+              const logo = logoFor(p);
+              return (
+                <li>
+                  <a href={p.url} target="_blank" rel="noopener" class="opacity-80 transition-opacity hover:opacity-100">
+                    {logo ? (
+                      <img src={logo.src} alt={p.name} class="h-8 w-auto" loading="lazy" />
+                    ) : (
+                      <span class="font-display text-xl font-semibold text-hueso">{p.name}</span>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        )
+      }
+      <a href={`mailto:${site.email}?subject=${subject}`} class="btn btn-primary mt-10">{d.partners.cta}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,67 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { t } from '../i18n/utils';
+import type { Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+---
+
+<section id="para-quien" class="hairline scroll-mt-16 border-t">
+  <div class="section py-20 md:py-24">
+    <SectionHeading kicker={d.whoFor.kicker} title={d.whoFor.title} size="md" />
+    <p class="label mt-8 text-piedra">{d.whoFor.hint}</p>
+
+    <ul class="mt-6 flex flex-wrap gap-3" data-profiles>
+      {
+        d.whoFor.profiles.map((p, i) => (
+          <li>
+            <button
+              type="button"
+              class="btn btn-ghost aria-pressed:bg-hueso aria-pressed:text-grafito"
+              aria-pressed={i === 0 ? 'true' : 'false'}
+              aria-controls={`profile-${i}`}
+              data-profile-btn={i}
+            >
+              {p.name}
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="ticks mt-8 min-h-28 max-w-2xl px-6 py-6" aria-live="polite">
+      {
+        d.whoFor.profiles.map((p, i) => (
+          <div id={`profile-${i}`} class={i === 0 ? '' : 'hidden'} data-profile-panel={i}>
+            <p class="font-display text-2xl font-semibold tracking-[-0.04em] text-hueso">{p.name}</p>
+            <p class="mt-2 text-ceniza">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 max-w-2xl text-pretty text-ceniza">{d.whoFor.outro}</p>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-profiles]');
+  if (root) {
+    const buttons = root.querySelectorAll<HTMLButtonElement>('[data-profile-btn]');
+    const panels = document.querySelectorAll<HTMLElement>('[data-profile-panel]');
+    const show = (i: string | undefined) => {
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.profileBtn === i)));
+      panels.forEach((p) => p.classList.toggle('hidden', p.dataset.profilePanel !== i));
+    };
+    buttons.forEach((b) => {
+      b.addEventListener('click', () => show(b.dataset.profileBtn));
+      b.addEventListener('pointerenter', (e) => {
+        if ((e as PointerEvent).pointerType === 'mouse') show(b.dataset.profileBtn);
+      });
+    });
+  }
+</script>

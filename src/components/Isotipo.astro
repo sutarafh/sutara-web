@@ -1,0 +1,22 @@
+---
+/** Isotipo de Sutara (el umbral con el fuego dentro), en currentColor. */
+interface Props {
+  class?: string;
+  title?: string;
+}
+const { class: className = 'h-6 w-auto', title } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 442 460"
+  class={className}
+  fill="currentColor"
+  fill-rule="evenodd"
+  role={title ? 'img' : undefined}
+  aria-hidden={title ? undefined : 'true'}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {title && <title>{title}</title>}
+  <path d="M0 0H442V366H345V95H95V460H0Z"></path>
+  <path d="M172 272H265V365H172Z"></path>
+</svg>

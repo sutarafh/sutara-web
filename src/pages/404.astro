@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { localePath } from '../i18n/utils';
+---
+
+<Base locale="es" title="404 · Sutara Founder House" description="Esta página no existe.">
+  <section class="section py-32">
+    <p class="label flex items-center gap-2 text-brasa"><span aria-hidden="true">→</span> 404</p>
+    <h1 class="mt-6 text-[clamp(2.5rem,7vw,5rem)] text-hueso">Aquí no hay nada forjado todavía.</h1>
+    <p class="mt-6 text-ceniza">Esta página no existe. / This page does not exist.</p>
+    <div class="mt-9 flex flex-wrap gap-3">
+      <a href={localePath('es')} class="btn btn-primary">Portada</a>
+      <a href={localePath('en')} class="btn btn-ghost">Home (EN)</a>
+    </div>
+  </section>
+</Base>

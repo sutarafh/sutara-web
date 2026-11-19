@@ -1,0 +1,28 @@
+---
+/**
+ * Logotipo: isotipo + wordmark "sutara" en Manrope (el wordmark original es Manrope
+ * con la "u" y la "t" unidas; aquí se aproxima con la misma fuente y tracking).
+ */
+interface Props {
+  variant?: 'hueso' | 'grafito';
+  withTagline?: boolean;
+  class?: string;
+}
+const { variant = 'hueso', withTagline = false, class: className = '' } = Astro.props;
+const color = variant === 'hueso' ? 'text-hueso' : 'text-grafito';
+import Isotipo from './Isotipo.astro';
+---
+
+<span class={`inline-flex items-center gap-2.5 ${color} ${className}`}>
+  <Isotipo class="h-[1.15em] w-auto" />
+  <span class="flex flex-col leading-none">
+    <span class="font-display text-[1.45em] font-semibold tracking-[-0.06em] leading-none"
+      >sutara</span
+    >
+    {
+      withTagline && (
+        <span class="label mt-1 text-[0.42em] tracking-[0.32em] text-brasa">Founder House</span>
+      )
+    }
+  </span>
+</span>

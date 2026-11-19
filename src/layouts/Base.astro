@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, localePath, htmlLang, base } from '../i18n/utils';
+import { site, locales, type Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  path?: string; // ruta sin locale, p. ej. '' para la portada
+}
+const { locale, path = '' } = Astro.props;
+const d = t(locale);
+const title = Astro.props.title ?? d.meta.title;
+const description = Astro.props.description ?? d.meta.description;
+const canonical = new URL(localePath(locale, path), Astro.site);
+const og = new URL(`${base}/og.png`, Astro.site);
+const favicon = `${base}/favicon.svg`;
+---
+
+<!doctype html>
+<html lang={htmlLang[locale]} class="bg-grafito">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {
+      locales.map((l) => (
+        <link rel="alternate" hreflang={htmlLang[l]} href={new URL(localePath(l, path), Astro.site)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(localePath('es', path), Astro.site)} />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
+    <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
+    <meta name="theme-color" content="#151515" />
+    <meta name="color-scheme" content="dark" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:alt" content={d.meta.ogAlt} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_ES' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    <slot name="head" />
+  </head>
+  <body class="min-h-dvh">
+    <a
+      href="#main"
+      class="label fixed left-4 top-4 z-[100] -translate-y-24 bg-brasa px-4 py-2 text-grafito focus:translate-y-0"
+      >{d.nav.skip}</a
+    >
+    <Header locale={locale} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

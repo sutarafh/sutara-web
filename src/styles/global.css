@@ -1,0 +1,161 @@
+@import 'tailwindcss';
+
+/* Tipografías autohospedadas (manual de marca: Manrope títulos, Space Mono cuerpo) */
+@import '@fontsource-variable/manrope';
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
+
+@theme {
+  /* Paleta Sutara */
+  --color-grafito: #151515;
+  --color-hueso: #eee8da;
+  --color-brasa: #ff4d00;
+  --color-temple: #0a1728;
+  --color-acero: #4995da;
+  /* Neutros del tema del manual */
+  --color-ceniza: #c3beb3;
+  --color-piedra: #a29e95;
+  --color-humo: #565450;
+  --color-arena: #d9d2c2;
+
+  --font-display: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --tracking-display: -0.06em;
+  --tracking-display-tight: -0.08em;
+
+  --breakpoint-xs: 30rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-grafito font-mono text-hueso antialiased;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+  ::selection {
+    background: var(--color-brasa);
+    color: var(--color-grafito);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brasa);
+    outline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3,
+  .display {
+    @apply font-display font-semibold;
+    letter-spacing: var(--tracking-display);
+    line-height: 1;
+    text-wrap: balance;
+  }
+  h1 {
+    letter-spacing: var(--tracking-display-tight);
+  }
+}
+
+/* Etiqueta mono en mayúsculas (categorías, kickers). @utility para poder usarla en @apply. */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+@layer components {
+  /* Fondo grafito: siempre con la textura de pizarra (regla del manual) */
+  .bg-pizarra {
+    background-color: var(--color-grafito);
+    background-image: url('../assets/brand/fondo-pizarra.webp');
+    background-size: 1400px auto;
+    background-position: center top;
+  }
+
+  .section {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Botones: borde 0.5px, esquinas marcadas (manual) */
+  .btn {
+    @apply label relative inline-flex items-center justify-center gap-2 px-5 py-3 transition-colors duration-150;
+    border: 0.5px solid currentColor;
+  }
+  .btn::before,
+  .btn::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-color: currentColor;
+    border-style: solid;
+  }
+  .btn::before {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+  .btn::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 1px 1px 0;
+  }
+  .btn-primary {
+    @apply text-brasa hover:bg-brasa hover:text-grafito;
+  }
+  .btn-ghost {
+    @apply text-hueso hover:bg-hueso hover:text-grafito;
+  }
+  .btn-dark {
+    @apply text-grafito hover:bg-grafito hover:text-hueso;
+  }
+  .btn-solid {
+    @apply border-brasa bg-brasa text-grafito hover:border-hueso hover:bg-hueso;
+  }
+
+  /* Marcas de esquina en brasa para tablas y tarjetas (manual: "esquinas highlight") */
+  .ticks {
+    --tick: var(--color-brasa);
+    --tick-len: 14px;
+    background:
+      linear-gradient(var(--tick), var(--tick)) top left / var(--tick-len) 1px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) top left / 1px var(--tick-len) no-repeat,
+      linear-gradient(var(--tick), var(--tick)) top right / var(--tick-len) 1px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) top right / 1px var(--tick-len) no-repeat,
+      linear-gradient(var(--tick), var(--tick)) bottom left / var(--tick-len) 1px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) bottom left / 1px var(--tick-len) no-repeat,
+      linear-gradient(var(--tick), var(--tick)) bottom right / var(--tick-len) 1px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) bottom right / 1px var(--tick-len) no-repeat;
+  }
+
+  /* Líneas finas de separación */
+  .hairline {
+    border-color: color-mix(in oklab, var(--color-hueso) 18%, transparent);
+  }
+  .hairline-dark {
+    border-color: color-mix(in oklab, var(--color-grafito) 18%, transparent);
+  }
+
+  /* Listas con flecha (manual: flecha para listas, asterisco para separar) */
+  .arrow-list > li {
+    @apply relative pl-6;
+  }
+  .arrow-list > li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--color-brasa);
+  }
+  .arrow-list.on-light > li::before {
+    color: var(--color-grafito);
+  }
+}

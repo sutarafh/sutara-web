@@ -1,0 +1,23 @@
+---
+import { t, localePath, otherLocale } from '../i18n/utils';
+import type { Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+const { locale, class: className = '' } = Astro.props;
+const d = t(locale);
+const other = otherLocale(locale);
+---
+
+<a
+  href={localePath(other)}
+  hreflang={other}
+  lang={other}
+  class={`label text-ceniza transition-colors hover:text-brasa ${className}`}
+  aria-label={d.nav.switchLangLabel}
+  title={d.nav.switchLangLabel}
+>
+  {d.nav.switchLang}
+</a>

@@ -1,0 +1,37 @@
+---
+/**
+ * Raíz: redirige a /es/ (o a /en/ si el navegador prefiere inglés).
+ * Estático, así que la detección va en cliente con fallback por meta refresh.
+ */
+import { localePath } from '../i18n/utils';
+const es = localePath('es');
+const en = localePath('en');
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Sutara Founder House</title>
+    <link rel="alternate" hreflang="es-ES" href={es} />
+    <link rel="alternate" hreflang="en" href={en} />
+    <link rel="alternate" hreflang="x-default" href={es} />
+    <meta http-equiv="refresh" content={`0; url=${es}`} />
+    <script is:inline define:vars={{ es, en }}>
+      const prefersEnglish = (navigator.languages || [navigator.language || ''])
+        .map((l) => l.toLowerCase())
+        .some((l, i) => i === 0 && l.startsWith('en'));
+      location.replace(prefersEnglish ? en : es);
+    </script>
+    <style>
+      body { margin: 0; background: #151515; color: #eee8da; font-family: 'Space Mono', monospace; }
+      a { color: #ff4d00; }
+      p { padding: 2rem; }
+    </style>
+  </head>
+  <body>
+    <p><a href={es}>Castellano</a> · <a href={en}>English</a></p>
+  </body>
+</html>

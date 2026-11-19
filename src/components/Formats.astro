@@ -1,0 +1,47 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { t } from '../i18n/utils';
+import type { Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = t(locale);
+---
+
+<section id="formatos" class="hairline scroll-mt-16 border-t">
+  <div class="section py-20 md:py-24">
+    <SectionHeading kicker={d.formats.kicker} title={d.formats.title} size="md" />
+
+    <dl class="hairline mt-14 divide-y divide-hueso/15 border-t">
+      {
+        d.formats.items.map((f) => (
+          <div class="grid gap-3 py-7 md:grid-cols-[14rem_1fr] md:gap-10">
+            <dt class="font-display text-2xl font-semibold tracking-[-0.04em] text-hueso">{f.title}</dt>
+            <dd class="max-w-2xl text-ceniza">{f.body}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="mt-20">
+      <SectionHeading kicker={d.formats.topicsKicker} title={d.formats.topicsTitle} size="md" as="h3" />
+      <ul class="mt-10 grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          d.formats.topics.map((tp) => (
+            <li class="hairline border-t pt-4">
+              <p class="label text-hueso">
+                <span class="mr-2 text-brasa" aria-hidden="true">
+                  →
+                </span>
+                {tp.title}
+              </p>
+              <p class="mt-2 text-sm text-ceniza">{tp.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

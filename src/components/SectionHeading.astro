@@ -1,0 +1,33 @@
+---
+/** Kicker con flecha (como "→ the why" en el mockup) + título en Manrope. */
+interface Props {
+  kicker: string;
+  title?: string;
+  id?: string;
+  light?: boolean; // sección sobre hueso
+  as?: 'h2' | 'h3';
+  class?: string;
+  size?: 'lg' | 'md';
+}
+const { kicker, title, id, light = false, as: Tag = 'h2', class: className = '', size = 'lg' } = Astro.props;
+const kickerColor = light ? 'text-grafito' : 'text-brasa';
+const titleColor = light ? 'text-grafito' : 'text-hueso';
+const titleSize =
+  size === 'lg'
+    ? 'text-[clamp(2.25rem,5.2vw,4rem)]'
+    : 'text-[clamp(1.75rem,3.6vw,2.75rem)]';
+---
+
+<div class={className}>
+  <p class={`label flex items-center gap-2 ${kickerColor}`} id={id ? `${id}-kicker` : undefined}>
+    <span aria-hidden="true">→</span>
+    {kicker}
+  </p>
+  {
+    title && (
+      <Tag class={`mt-5 max-w-4xl ${titleSize} ${titleColor}`} id={id}>
+        {title}
+      </Tag>
+    )
+  }
+</div>

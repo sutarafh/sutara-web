@@ -1,0 +1,81 @@
+---
+/**
+ * Tarjeta de sesión al estilo de la invitación del manual de marca:
+ * fecha y hora en brasa arriba, banda brasa con el nombre, tabla con esquinas
+ * marcadas, programa con flechas y botón RSVP.
+ */
+import { t, pick, formatDate } from '../i18n/utils';
+import type { Locale } from '../data/site';
+import type { Session } from '../data/sessions';
+
+interface Props {
+  session: Session;
+  locale: Locale;
+  class?: string;
+}
+const { session, locale, class: className = '' } = Astro.props;
+const d = t(locale);
+const cells = [
+  { label: d.card.place, value: session.city },
+  { label: d.card.time, value: session.time },
+  { label: d.card.date, value: formatDate(session.date, locale, 'short') },
+  { label: d.card.spots, value: String(session.spots) },
+];
+const program = session.program.slice(0, 3);
+---
+
+<article
+  class={`hairline relative w-full max-w-md border bg-grafito/90 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] ${className}`}
+  aria-label={pick(session.name, locale)}
+>
+  <div class="flex items-center justify-between px-5 pt-4 font-mono text-sm text-brasa">
+    <span>{formatDate(session.date, locale, 'short')}</span>
+    <span class="label text-piedra">#{session.number}</span>
+    <span>{session.time}</span>
+  </div>
+
+  <div class="mt-4 bg-brasa px-5 py-4">
+    <p class="display text-grafito" style="font-size: clamp(2rem, 4.5vw, 2.6rem); letter-spacing: -0.06em;">
+      {pick(session.name, locale).toLowerCase()}
+    </p>
+  </div>
+
+  <dl class="ticks mx-5 mt-5 grid grid-cols-2">
+    {
+      cells.map((c, i) => (
+        <div
+          class={`px-4 py-4 ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b' : ''} hairline`}
+        >
+          <dt class="text-[0.6875rem] text-piedra">{c.label}</dt>
+          <dd class="mt-1 font-mono text-lg uppercase text-hueso">{c.value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  <ul class="mx-5 mt-5 space-y-1.5 text-[0.75rem] uppercase tracking-[0.08em]">
+    {
+      program.map((p) => (
+        <li class="flex items-baseline justify-between gap-4">
+          <span class="flex items-baseline gap-2 text-hueso">
+            <span class="text-brasa" aria-hidden="true">
+              →
+            </span>
+            {pick(p.title, locale)}
+          </span>
+          <span class="text-right text-piedra">
+            {p.speaker ? p.speaker : p.kind === 'talk' ? d.card.tba : p.kind === 'qa' ? d.card.starts : ''}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mx-5 mt-5 text-[0.75rem] uppercase tracking-[0.12em] text-ceniza">
+    {session.city} <span class="text-brasa">*</span> {pick(session.venue, locale)}
+  </p>
+
+  <div class="px-5 pb-5 pt-5">
+    <a href={session.luma} class="btn btn-ghost w-full" target="_blank" rel="noopener">{d.card.rsvp}</a>
+  </div>
+</article>

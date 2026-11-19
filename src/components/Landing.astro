@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import NextSession from './NextSession.astro';
+import Statement from './Statement.astro';
+import WhatIs from './WhatIs.astro';
+import WhoFor from './WhoFor.astro';
+import Formats from './Formats.astro';
+import Why from './Why.astro';
+import HowToJoin from './HowToJoin.astro';
+import Partners from './Partners.astro';
+import Faq from './Faq.astro';
+import Cta from './Cta.astro';
+import type { Locale } from '../data/site';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<Base locale={locale}>
+  <Hero locale={locale} />
+  <NextSession locale={locale} />
+  <Statement locale={locale} />
+  <WhatIs locale={locale} />
+  <WhoFor locale={locale} />
+  <Formats locale={locale} />
+  <Why locale={locale} />
+  <HowToJoin locale={locale} />
+  <Partners locale={locale} />
+  <Faq locale={locale} />
+  <Cta locale={locale} />
+</Base>

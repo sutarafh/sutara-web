@@ -1,0 +1,4 @@
+{
+  "_comment": "Partners con logo en la web. Deja el array vacío para mostrar el estado 'pronto'. Cada entrada: { name, url, tier: 'principal' | 'colaborador' | 'conocimiento', logo: nombre de fichero en src/assets/partners/ (PNG o SVG en hueso/monocromo) }.",
+  "partners": []
+}
