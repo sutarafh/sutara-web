@@ -8,8 +8,7 @@ export const site = {
   city: 'Bilbao',
   region: 'Bizkaia',
   foundedYear: 2026,
-  // TODO: URL real del calendario / formulario de acceso en Luma
-  luma: 'https://luma.com/sutara',
+  luma: 'https://luma.com/user/sutarafh',
   // TODO: correo definitivo
   email: 'sutara.fh@gmail.com',
   // TODO: redes (dejar en '' para ocultar el enlace)

@@ -56,4 +56,4 @@ Alternativa sin workflow: conectar el repo a Vercel o Netlify (framework Astro, 
 
 ## Pendiente de confirmar
 
-Busca `TODO` en el código. En concreto: enlace real de Luma, correo definitivo, redes, dominio y fecha/aforo de la sesión cero.
+Busca `TODO` en el código. En concreto: correo definitivo, redes, dominio, hora/aforo de la sesión cero y el enlace al evento concreto en Luma (ahora apunta al perfil de Sutara).
