@@ -1,5 +1,5 @@
 {
-  "_comment": "Sesiones de Sutara. La primera con status 'upcoming' es la que sale en el hero. Fechas en ISO (YYYY-MM-DD). TODO: confirmar hora y aforo de la sesión cero; cuando el evento tenga página propia en Luma, poner aquí su enlace.",
+  "_comment": "Sesiones de Sutara. La primera con status 'upcoming' es la que sale en el hero. Fechas en ISO (YYYY-MM-DD). TODO: confirmar hora y aforo de la sesión cero.",
   "sessions": [
     {
       "number": "000",
@@ -15,7 +15,7 @@
         "en": "The address is in the invitation"
       },
       "spots": 30,
-      "luma": "https://luma.com/user/sutarafh",
+      "luma": "https://luma.com/r9qmcq6f",
       "program": [
         {
           "kind": "talk",
