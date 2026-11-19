@@ -189,41 +189,9 @@ export const es: Dictionary = {
     kicker: 'Para empresas',
     title: 'Entrar es gratis. Lo pagan los partners.',
     lead: 'Empresas que cubren el espacio, la comida y la bebida, y que quieren estar cerca de quien está empezando a elegir con quién trabajar. No deciden quién entra ni qué se enseña.',
-    tiers: [
-      {
-        name: 'Patrocinador principal',
-        note: 'Plazas limitadas',
-        perks: [
-          'Exclusividad sectorial',
-          'Sesión propia con los founders',
-          'Office hours con los participantes',
-          'Tu marca en comunicaciones y contenidos',
-        ],
-      },
-      {
-        name: 'Colaborador',
-        note: 'Por sesión o por temporada',
-        perks: [
-          'Presencia en sesiones y networking',
-          'Acceso a office hours',
-          'Presencia en las comunicaciones',
-        ],
-      },
-      {
-        name: 'Partner de conocimiento',
-        note: 'En especie',
-        perks: [
-          'Formación o servicios para founders',
-          'Ponencia o taller práctico',
-          'Mostrar cómo trabajas',
-        ],
-      },
-    ],
-    notForSale:
-      'Lo que no se puede comprar: keynotes comerciales, control del programa, datos de los asistentes ni captura obligatoria de leads.',
-    logosTitle: 'Nos apoyan',
-    logosEmpty: 'Estamos cerrando los primeros partners. ¿Tu empresa?',
-    cta: 'Cómo ser partner',
+    body: 'Si tu empresa quiere apoyar a Sutara, escríbenos y lo hablamos en una llamada.',
+    cta: 'Escríbenos para ser partner',
+    mailSubject: 'Partner de Sutara',
   },
   faq: {
     kicker: 'Antes de venir',

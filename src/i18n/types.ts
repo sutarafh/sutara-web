@@ -89,11 +89,9 @@ export interface Dictionary {
     kicker: string;
     title: string;
     lead: string;
-    tiers: { name: string; note: string; perks: string[] }[];
-    notForSale: string;
-    logosTitle: string;
-    logosEmpty: string;
+    body: string;
     cta: string;
+    mailSubject: string;
   };
   faq: { kicker: string; title: string; items: { q: string; a: string }[] };
   cta: { title: string; body: string; primary: string; secondary: string };

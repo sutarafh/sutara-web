@@ -26,7 +26,6 @@ npm run format   # prettier
 | Quiero cambiar… | Fichero |
 | --- | --- |
 | La próxima sesión (fecha, hora, plazas, programa, enlace de Luma) | `src/data/sessions.json` |
-| Partners con logo | `src/data/partners.json` + logo en `src/assets/partners/` |
 | Enlace de Luma, correo, redes, dominio | `src/data/site.ts` y `astro.config.mjs` (`site`) |
 | Textos en castellano / inglés | `src/i18n/es.ts` / `src/i18n/en.ts` (misma estructura, tipada en `types.ts`) |
 | Colores, tipografías, botones, esquinas, textura de pizarra | `src/styles/global.css` |
@@ -36,14 +35,6 @@ npm run format   # prettier
 ### Sesiones
 
 La primera sesión con `"status": "upcoming"` (ordenada por fecha) es la que aparece en la tarjeta del hero y en la sección *Próxima sesión*. Cuando pase, cámbiala a `"past"` y añade la siguiente. Los ponentes se escriben en `program[].speaker`; si es `null` se muestra «por anunciar».
-
-### Partners
-
-```json
-{ "name": "Empresa", "url": "https://empresa.com", "tier": "principal", "logo": "empresa.svg" }
-```
-
-El logo debe estar en hueso o monocromo (se muestra sobre grafito). Si `partners` está vacío se muestra el texto de «estamos cerrando los primeros partners».
 
 ## Identidad visual (resumen del manual de marca)
 

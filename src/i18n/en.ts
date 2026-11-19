@@ -189,33 +189,9 @@ export const en: Dictionary = {
     kicker: 'For companies',
     title: 'Getting in is free. Partners pay for it.',
     lead: 'Companies that cover the venue, food and drinks, and want to be close to people who are starting to choose who to work with. They do not decide who gets in or what is shown.',
-    tiers: [
-      {
-        name: 'Main sponsor',
-        note: 'Limited slots',
-        perks: [
-          'Sector exclusivity',
-          'Your own session with the founders',
-          'Office hours with participants',
-          'Your brand in communications and content',
-        ],
-      },
-      {
-        name: 'Collaborator',
-        note: 'Per session or per season',
-        perks: ['Presence at sessions and networking', 'Access to office hours', 'Presence in communications'],
-      },
-      {
-        name: 'Knowledge partner',
-        note: 'In kind',
-        perks: ['Training or services for founders', 'A talk or hands-on workshop', 'Show how you work'],
-      },
-    ],
-    notForSale:
-      'What is not for sale: commercial keynotes, control over the program, attendee data or mandatory lead capture.',
-    logosTitle: 'Supported by',
-    logosEmpty: 'We are closing the first partners. Your company?',
-    cta: 'How to become a partner',
+    body: 'If your company wants to support Sutara, write to us and we will talk it through on a call.',
+    cta: 'Write to us to become a partner',
+    mailSubject: 'Sutara partner',
   },
   faq: {
     kicker: 'Before you come',
